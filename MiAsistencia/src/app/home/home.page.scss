@@ -1,0 +1,45 @@
+.saludo{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.contenido{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner{
+  background-color: var(--morado-duoc);
+}
+
+.margen-der{
+  margin-right: 5px;
+}
+
+.saludo{
+  margin-top: 50%;
+}
+
+.logout{
+  margin-top: 5%;
+  margin-left: 3%;
+}
+
+#logoutId{
+  height: 30px;
+  width: 200px;
+}
+
+ion-toolbar{
+  --ion-toolbar-background: var(--morado-duoc);
+}
+
+.imagen{
+  margin-top: 30px;
+}
+
+.largo{
+  height: 100%;
+  width: 260px;
+}

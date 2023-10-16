@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ver-asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ul>
+  <li *ngFor="let asistencia of datosAsistencia">
+    <!-- Aquí muestra los datos, por ejemplo, el correo, fecha, asignatura, etc. -->
+    {{ asistencia.correo }}/{{ asistencia.fecha }}/{{ asistencia.asignatura }}/{{ asistencia.seccion }}
+    
+  </li>
+</ul>
+  <ion-button (click)="obtenerDatos()" type="submit">Obtener Datos</ion-button>
+</ion-content>
