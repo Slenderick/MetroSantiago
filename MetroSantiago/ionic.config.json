@@ -1,0 +1,7 @@
+{
+  "name": "MetroSantiago",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
