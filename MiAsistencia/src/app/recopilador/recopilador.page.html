@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>recopilador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-content [fullscreen]="true">
+    <ion-row class="ion-justify-content-center" style="margin-top: 20px;">
+      <ion-button (click)="getPosts()">Usar api</ion-button>
+    </ion-row>
+
+    <select id="stationSelect">
+      <option value="">Selecciona una estación</option>
+      <option *ngFor="let station of estacionData" [value]="station.id">
+        {{ station.lines.stations.[0].name | titlecase}} /</option>
+    </select>
+
+    <ion-row class="ion-justify-content-center" style="margin-top: 20px;">
+      <ion-button (click)="home()">Volver</ion-button>
+    </ion-row>
+
+
+  </ion-content>

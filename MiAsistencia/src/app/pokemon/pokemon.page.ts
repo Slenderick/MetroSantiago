@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PokemonPage implements OnInit {
 
-  arrayPosts: any;
+  arrayPosts: any; 
   randomNumber: number = 0;
   characterData: any;
   url = 'https://pokeapi.co/api/v2/pokemon';
