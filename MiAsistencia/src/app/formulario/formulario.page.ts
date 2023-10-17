@@ -4,7 +4,7 @@ import { Animation, AnimationController } from '@ionic/angular';
 import { RegistroAsistenciaService } from '../servicios/registro-asistencia.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-formulario',
@@ -12,26 +12,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario.page.scss'],
 })
 export class FormularioPage implements OnInit {
-
   formulario: FormGroup;
-
-  asignaturaOpciones: string[] = [
-    'Arquitectura',
-    'Calidad de Software',
-    'Inglés Intermedio',
-    'Portafolio Final',
-    'Programación Aplicaciones Móviles'
+  /** Api*/
+  url = 'https://api.xor.cl/red/metro-network';
+  estacionData: any;
+  selectedTurn: any;
+  selectedStation: any;
+  seccion: any;
+  lines: any; // Variable para almacenar las líneas
+  linesLargo: any;
+  stations: any;
+  stationsLargo: any;
+  nombreEstacion: string[] = [];
+  /* */
+  seccionOpciones: string[] = [
+    'AM',
+    'PM'
   ];
 
-  seccionOpciones: { [key: string]: string[] } = {
-    'Arquitectura': ['ASY4131-001D', 'ASY4131-002D', 'ASY4131-003D', 'ASY4131-001V'],
-    'Calidad de Software': ['CSY4111-001D', 'CSY4111-002D', 'CSY4111-003D', 'CSY4111-001V'],
-    'Inglés Intermedio': ['INI5111-001D', 'INI5111-002D', 'INI5111-003D', 'INI5111-001V'],
-    'Portafolio Final': ['PY41447-001D', 'PY41447-002D', 'PY41447-003D', 'PY41447-001V'],
-    'Programación Aplicaciones Móviles': ['PGY4121-001D', 'PGY4121-002D', 'PGY4121-003D', 'PGY4121-001V']
-  };
 
   constructor(
+    private http: HttpClient,
     private animationCtrl: AnimationController,
     private RegistroAsistenciaService: RegistroAsistenciaService,
     private afAuth: AngularFireAuth,
@@ -70,12 +71,33 @@ export class FormularioPage implements OnInit {
     await animation.play()
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home']);
   }
+  onEstacionChange() {
+    // Puedes acceder a this.selectedEstacion para obtener el valor seleccionado y realizar acciones basadas en él.
+    console.log("Estación seleccionada:", this.selectedStation);
+    // Realiza otras acciones según sea necesario.
+  }
 
+  getPosts() { //llamamos a la funcion getPost de nuestro servicio
+    this.http.get(this.url).subscribe((data: any) => {
+      this.estacionData = data;
+      this.lines = data.lines;
+      this.nombreEstacion = [];
+      for (let i = 0; i < this.lines.length; i++) {
+        this.linesLargo = this.lines[i]
+        for (let x = 0; x < this.linesLargo.stations.length; x++) {
+          this.stationsLargo = this.linesLargo.stations[x]
+          this.nombreEstacion.push(this.stationsLargo.name)
+        }
+      }
+      this.nombreEstacion = this.nombreEstacion.filter((value, index, self) => self.indexOf(value) === index);
+    });
 
+  }
   ngOnInit() {
+    this.getPosts();
     this.animarContenido();
     this.animarTitulo();
     this.afAuth.authState.subscribe(user => {
@@ -91,10 +113,10 @@ export class FormularioPage implements OnInit {
   }
 
 
-  onChangeAsignatura() {
-    const asignaturaControl = this.formulario.get('asignatura');
-    if (asignaturaControl) {
-      const asignaturaSeleccionada = asignaturaControl.value;
+  onChangeTurno() {
+    const TurnoControl = this.formulario.get('seccion');
+    if (TurnoControl) {
+      const selectedTurn = TurnoControl.value;
 
 
     }

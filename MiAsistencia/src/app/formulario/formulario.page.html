@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="ion-text-center titulo" style="color: whitesmoke;">Registrar Asistencia</ion-title>
+    <ion-title class="ion-text-center titulo" style="color: whitesmoke;">Registrar Turno</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,14 +11,14 @@
   <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
     <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="asignatura" label="Asignatura" placeholder="Seleccionar" (ionChange)="onChangeAsignatura()">
-        <ion-select-option *ngFor="let asignatura of asignaturaOpciones" [value]="asignatura">{{ asignatura }}</ion-select-option>
+      <ion-select formControlName="asignatura"  [(ngModel)]="selectedStation" label="Estacion" placeholder="Seleccionar" (ionChange)="onEstacionChange()">
+        <ion-select-option *ngFor="let estacion of nombreEstacion" [value]="estacion">{{ estacion }}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="seccion" label="Sección" placeholder="Seleccionar" (ionChange)="onChangeAsignatura()">
-        <ion-select-option *ngFor="let seccion of seccionOpciones[formulario.get('asignatura')?.value || '']" [value]="seccion">{{ seccion }}</ion-select-option>
+      <ion-select formControlName="seccion" label="Sección" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeTurno()">
+        <ion-select-option *ngFor="let seccion of seccionOpciones" [value]="seccion">{{ seccion }}</ion-select-option>
       </ion-select>
     </ion-item>
   
