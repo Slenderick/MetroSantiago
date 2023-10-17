@@ -6,20 +6,9 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-content [fullscreen]="true">
-    <ion-row class="ion-justify-content-center" style="margin-top: 20px;">
-      <ion-button (click)="getPosts()">Usar api</ion-button>
-    </ion-row>
-
-    <select id="stationSelect">
-      <option value="">Selecciona una estación</option>
-      <option *ngFor="let station of estacionData" [value]="station.id">
-       </option>
-    </select>
-
-    <ion-row class="ion-justify-content-center" style="margin-top: 20px;">
-      <ion-button (click)="home()">Volver</ion-button>
-    </ion-row>
+  <select [(ngModel)]="selectedStation" (change)="onEstacionChange()">
+    <option *ngFor="let estacion of nombreEstacion" [value]="estacion">{{ estacion }}</option>
+  </select>
 
 
   </ion-content>
