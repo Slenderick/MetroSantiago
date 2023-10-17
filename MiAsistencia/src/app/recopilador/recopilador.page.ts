@@ -35,9 +35,9 @@ export class RecopiladorPage implements OnInit {
         for (let x = 0; x < this.linesLargo.stations.length; x++) {
           this.stationsLargo = this.linesLargo.stations[x]
           this.nombreEstacion.push(this.stationsLargo.name)
-
         }
       }
+      this.nombreEstacion = this.nombreEstacion.filter((value, index, self) => self.indexOf(value) === index);
     });
 
   }
