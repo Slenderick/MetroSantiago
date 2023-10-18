@@ -5,14 +5,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ul>
+    <li *ngFor="let recopilado of datosRecopilador">
+      <!-- Aquí muestra los datos, por ejemplo, el correo, fecha, asignatura, etc. -->
+      {{ recopilado.linea }}
+      
+    </li>
+  </ul>
+    <ion-button (click)="obtenerDatos()" type="submit">Obtener Datos</ion-button>
+ 
 
-  <select [(ngModel)]="lineaSeleccionada" (change)="onLineChange()">
-    <option *ngFor="let line of lines" [value]="line">{{ line }}</option>
-  </select>
-  
-  <select [(ngModel)]="selectedStation">
-    <option *ngFor="let station of estacionesDisponibles" [value]="station">{{ station }}</option>
-  </select>
-
-
-  </ion-content>
+</ion-content>

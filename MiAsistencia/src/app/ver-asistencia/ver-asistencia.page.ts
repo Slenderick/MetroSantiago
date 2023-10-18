@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VerAsistenciaService } from '../servicios/ver-asistencia.service';
 
 @Component({
-  selector: 'app-ver-asistencia',
+  selector: 'app-ver-asistencia', 
   templateUrl: './ver-asistencia.page.html',
   styleUrls: ['./ver-asistencia.page.scss'],
 })

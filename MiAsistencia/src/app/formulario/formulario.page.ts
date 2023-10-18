@@ -5,6 +5,7 @@ import { RegistroAsistenciaService } from '../servicios/registro-asistencia.serv
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-formulario',
@@ -31,6 +32,7 @@ export class FormularioPage implements OnInit {
     'AM',
     'PM'
   ];
+  contador: any = 0;
 
 
   constructor(
@@ -38,7 +40,8 @@ export class FormularioPage implements OnInit {
     private animationCtrl: AnimationController,
     private RegistroAsistenciaService: RegistroAsistenciaService,
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private navCtrl: NavController
   ) {
     this.formulario = new FormGroup({
       linea : new FormControl(''),
@@ -135,13 +138,41 @@ export class FormularioPage implements OnInit {
     }
   }
 
+  incrementar() {
+    this.contador++;
+    // Actualiza el valor del contador en el formulario
+  }
 
-
+  restar() {
+    if (this.contador > 0) {
+      this.contador--;
+    }
+  }
 
   async onSubmit() {
+    // Agrega el valor del contador al objeto this.formulario.value
+    this.formulario.value.contador = this.contador;
+
+    if (this.contador <= 10) {
+      this.formulario.value.aglomeracion = "Aglomeración Baja";
+    } else if (this.contador <= 50) {
+      this.formulario.value.aglomeracion = "Aglomeración Media";
+    } else {
+      this.formulario.value.aglomeracion = "Aglomeración Alta";
+    }
+
+    if (this.contador <= 30) {
+      this.formulario.value.flujo = "Flujo Bajo";
+    }  else {
+      this.formulario.value.flujo = "Flujo Alto";
+    }
+
     console.log(this.formulario.value);
     const response = await this.RegistroAsistenciaService.AddRecopilador(this.formulario.value);
     console.log(response)
+    
+    this.contador = 0;
+
   }
 
 }
