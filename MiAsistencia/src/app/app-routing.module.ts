@@ -19,22 +19,14 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'reset-password',
-    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
-  },
-  {
     path: 'formulario',
     loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule),
     canActivate: [AngularFireAuthGuard]
   },
   {
-    path: 'ver-asistencia',
-    loadChildren: () => import('./ver-asistencia/ver-asistencia.module').then( m => m.VerAsistenciaPageModule),
-    canActivate: [AngularFireAuthGuard]
-  },
-  {
     path: 'recopilador',
-    loadChildren: () => import('./recopilador/recopilador.module').then( m => m.RecopiladorPageModule)
+    loadChildren: () => import('./recopilador/recopilador.module').then( m => m.RecopiladorPageModule),
+    canActivate: [AngularFireAuthGuard]
   },
 
 
