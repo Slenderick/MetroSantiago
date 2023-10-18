@@ -1,17 +1,19 @@
 import { Injectable  } from '@angular/core';
-import { Recopilador } from '../app.model';
-import { Firestore , collection , collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class VerDatosService {
 
-  constructor(private firestore : Firestore) { }
+  constructor(private firestore : AngularFirestore) { }
 
-  obtenerDatos(): Observable<Recopilador[]> {
-    let recopiladorRef = collection(this.firestore, 'recopilador');
-    return collectionData(recopiladorRef, { idField: 'id'}) as Observable<Recopilador[]>;
+  obtenerDatos(){
+    return this.firestore
+    .collection('recopilador')
+    .snapshotChanges();
   }
+
+  
 }

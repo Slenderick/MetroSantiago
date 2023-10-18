@@ -1,18 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>recopilador</ion-title>
+    <ion-title style="text-align: center;">Datos Recopilados</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ul>
-    <li *ngFor="let recopilado of datosRecopilador">
-      <!-- Aquí muestra los datos, por ejemplo, el correo, fecha, asignatura, etc. -->
-      {{ recopilado.linea }}
-      
-    </li>
-  </ul>
-    <ion-button (click)="obtenerDatos()" type="submit">Obtener Datos</ion-button>
+    <ion-grid>
+      <ion-row class="header-row" style="font-size:xx-small;">
+        <ion-col class="ion-text-center" size="2"><b>Linea</b></ion-col>
+        <ion-col class="ion-text-center" size="2"><b>Estacion</b></ion-col>
+        <ion-col class="ion-text-center" size="2"><b>Fecha</b></ion-col>
+        <ion-col class="ion-text-center" size="1.3"><b>Jornada</b></ion-col>
+        <ion-col class="ion-text-center" size="1.5"><b>Contador</b></ion-col>
+        <ion-col class="ion-text-center" size="1.5"><b>Aglomeración</b></ion-col>
+        <ion-col class="ion-text-center" size="1.5"><b>Flujo</b></ion-col>
+      </ion-row>
+      <ion-row class="data-row" *ngFor="let recopilado of datosRecopilador" style="font-size: small;">
+        <ion-col class="ion-text-center" size="2">{{ recopilado.linea }}</ion-col>
+        <ion-col class="ion-text-center" size="2">{{ recopilado.estacion }}</ion-col>
+        <ion-col class="ion-text-center" size="2" style="font-size: x-small;">{{ recopilado.fecha }}</ion-col>
+        <ion-col class="ion-text-center" size="1.3">{{ recopilado.jornada }}</ion-col>
+        <ion-col class="ion-text-center" size="1.5">{{ recopilado.contador }}</ion-col>
+        <ion-col class="ion-text-center" size="1.5">{{ recopilado.aglomeracion }}</ion-col>
+        <ion-col class="ion-text-center" size="1.5">{{ recopilado.flujo }}</ion-col>
+      </ion-row>
+      <hr>
+    </ion-grid>
  
 
 </ion-content>

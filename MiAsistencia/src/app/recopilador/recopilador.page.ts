@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VerDatosService } from '../servicios/ver-datos.service';
-
+import { Recopilador } from '../app.model';
 
 @Component({
   selector: 'app-recopilador',
@@ -9,17 +9,25 @@ import { VerDatosService } from '../servicios/ver-datos.service';
 })
 export class RecopiladorPage implements OnInit {
 
-  datosRecopilador: any[] = [];
+  datosRecopilador: Recopilador[] = [];
 
 
   constructor(private verDatosService : VerDatosService) { }
 
   obtenerDatos() {
-    this.verDatosService.obtenerDatos().subscribe(data => {
-      this.datosRecopilador = data; 
-      console.log(data)// Almacena los datos en la propiedad datosAsistencia
+    this.verDatosService.obtenerDatos().subscribe(datos => {
+      this.datosRecopilador = datos.map( e => {
+        return{
+          linea : e.payload.doc.id,
+          ... e.payload.doc.data() as {}
+
+        } as Recopilador;
+      })          
+      console.log(datos)// Almacena los datos en la propiedad datosAsistencia
     });
   }
+
+  
 
 
   ngOnInit() {

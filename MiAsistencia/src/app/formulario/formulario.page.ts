@@ -151,20 +151,26 @@ export class FormularioPage implements OnInit {
 
   async onSubmit() {
     // Agrega el valor del contador al objeto this.formulario.value
+    const date = new Date();
+    const fechaFormateada = date.toLocaleDateString();
+    if(date){
+      this.formulario.patchValue({ fecha: fechaFormateada })
+    }
+
     this.formulario.value.contador = this.contador;
 
     if (this.contador <= 10) {
-      this.formulario.value.aglomeracion = "Aglomeración Baja";
+      this.formulario.value.aglomeracion = "Baja";
     } else if (this.contador <= 50) {
-      this.formulario.value.aglomeracion = "Aglomeración Media";
+      this.formulario.value.aglomeracion = "Media";
     } else {
-      this.formulario.value.aglomeracion = "Aglomeración Alta";
+      this.formulario.value.aglomeracion = "Alta";
     }
 
     if (this.contador <= 30) {
-      this.formulario.value.flujo = "Flujo Bajo";
+      this.formulario.value.flujo = "Bajo";
     }  else {
-      this.formulario.value.flujo = "Flujo Alto";
+      this.formulario.value.flujo = "Alto";
     }
 
     console.log(this.formulario.value);

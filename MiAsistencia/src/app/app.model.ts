@@ -9,7 +9,6 @@ export interface User{
 
 export interface Asistencia {
     correo: string;
-    fecha: Timestamp;
     asignatura: string;
     seccion: string;
 }
