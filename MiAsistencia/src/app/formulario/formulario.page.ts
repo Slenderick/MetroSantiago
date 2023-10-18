@@ -28,9 +28,9 @@ export class FormularioPage implements OnInit {
   lineaSeleccionada: string[] = []; // Variable para almacenar la línea seleccionada
   estacionesDisponibles: string[] = []; // Variable para almacenar las estaciones de la línea seleccionada
   /* */
-  seccionOpciones: string[] = [
-    'AM',
-    'PM'
+  ingresoOpciones: string[] = [
+    'Entrada',
+    'Salida'
   ];
   contador: any = 0;
 
@@ -50,7 +50,8 @@ export class FormularioPage implements OnInit {
       contador: new FormControl(''),
       aglomeracion: new FormControl(''),
       flujo: new FormControl(''),
-      jornada: new FormControl('')
+      tipoIngreso: new FormControl(''),
+      aprobado: new FormControl('false')
     })
   }
   async animarContenido() {
@@ -124,7 +125,7 @@ export class FormularioPage implements OnInit {
 
   onEstacionChange() {
     // Puedes acceder a this.selectedEstacion para obtener el valor seleccionado y realizar acciones basadas en él.
-    console.log("Estación seleccionada:", this.selectedStation);
+    console.log("Estación seleccionada:", this.ingresoOpciones);
     // Realiza otras acciones según sea necesario.
   }
 

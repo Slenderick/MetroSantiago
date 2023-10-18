@@ -26,8 +26,8 @@
     
 
     <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="jornada" label="Jornada" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeTurno()">
-        <ion-select-option *ngFor="let seccion of seccionOpciones" [value]="seccion">{{ seccion }}</ion-select-option>
+      <ion-select formControlName="tipoIngreso" label="Tipo Ingreso" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeTurno()">
+        <ion-select-option *ngFor="let seccion of ingresoOpciones" [value]="seccion">{{ seccion }}</ion-select-option>
       </ion-select>
     </ion-item>
 

@@ -20,5 +20,7 @@ export interface Recopilador {
     contador: string;
     aglomeracion: string;
     flujo: string;
-    jornada: string;
+    tipoIngreso: string;
+    aprobado: boolean;
+    mostrarAceptado: boolean;
 }

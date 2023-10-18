@@ -1,3 +1,36 @@
-hr {
-    border-color: black;
-}
+/* Estilos para la tabla */
+ion-grid {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Estilos para las filas de encabezado */
+  .header-row {
+    background-color: #f0f0f0; /* Color de fondo del encabezado */
+    font-weight: bold;
+    border: 1px solid #000; /* Borde superior e inferior */
+  }
+  
+  /* Estilos para las filas de datos */
+  .data-row {
+    border: 1px solid #000; /* Borde superior e inferior */
+  }
+  
+  /* Estilos para las celdas de la tabla */
+  ion-col {
+    padding: 8px; /* Espaciado interno de las celdas */
+    text-align: center;
+    border: 1px solid #000; /* Borde izquierdo y derecho */
+  }
+  
+  /* Estilos para la última celda de cada fila */
+  .data-row ion-col:last-child {
+    border-right: none; /* No agregar un borde derecho a la última celda de datos */
+  }
+
+  .mensaje-aceptado {
+    color: green;
+    font-size: x-small;
+    margin-left: 10px; /* Ajusta el margen izquierdo según tus necesidades */
+  }
+  
