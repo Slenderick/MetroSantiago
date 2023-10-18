@@ -97,10 +97,6 @@ export class LoginPage implements OnInit {
     }
   }
 
-  reset(){
-    this.router.navigate(['/reset-password'])
-  }
-
   ngOnInit() {
     this.animarTitulo();
     this.animarContenido();
