@@ -18,11 +18,9 @@ export class RecopiladorPage implements OnInit {
   stations: any;
   stationsLargo: any;
   nombreEstacion: string[] = [];
+  lineaSeleccionada: string[] = []; // Variable para almacenar la línea seleccionada
+  estacionesDisponibles: string[] = []; // Variable para almacenar las estaciones de la línea seleccionada
   
-
-
-
-
   constructor(private http: HttpClient, private router: Router) { }
 
   getPosts() { //llamamos a la funcion getPost de nuestro servicio
@@ -38,8 +36,15 @@ export class RecopiladorPage implements OnInit {
         }
       }
       this.nombreEstacion = this.nombreEstacion.filter((value, index, self) => self.indexOf(value) === index);
+      this.lines = data.lines.map((line: any) => line.name);
     });
 
+  }
+
+  onLineChange() {
+    this.estacionesDisponibles = this.estacionData.lines
+      .find((line: any) => line.name === this.lineaSeleccionada)
+      .stations.map((station: any) => station.name);
   }
 
   onEstacionChange() {

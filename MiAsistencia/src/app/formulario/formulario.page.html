@@ -10,11 +10,20 @@
   <img src="../../assets/logo-duoc.png" style="width: 66%; margin-left: 60px;" alt="">
   <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
+
     <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="asignatura"  [(ngModel)]="selectedStation" label="Estacion" placeholder="Seleccionar" (ionChange)="onEstacionChange()">
-        <ion-select-option *ngFor="let estacion of nombreEstacion" [value]="estacion">{{ estacion }}</ion-select-option>
+      <ion-select formControlName="linea"  [(ngModel)]="lineaSeleccionada" label="Linea" placeholder="Seleccionar" (ionChange)="onLineChange()">
+        <ion-select-option *ngFor="let line of lines" [value]="line">{{ line }}</ion-select-option>
       </ion-select>
     </ion-item>
+
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-select formControlName="estacion" [(ngModel)]="selectedStation" label="Estacion" placeholder="Seleccionar">
+        <ion-select-option *ngFor="let station of estacionesDisponibles" [value]="station">{{ station }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    
 
     <ion-item style="margin-top: 20px;" class="texto">
       <ion-select formControlName="seccion" label="Sección" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeTurno()">

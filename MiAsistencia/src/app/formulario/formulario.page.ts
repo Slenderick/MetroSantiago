@@ -24,6 +24,8 @@ export class FormularioPage implements OnInit {
   stations: any;
   stationsLargo: any;
   nombreEstacion: string[] = [];
+  lineaSeleccionada: string[] = []; // Variable para almacenar la línea seleccionada
+  estacionesDisponibles: string[] = []; // Variable para almacenar las estaciones de la línea seleccionada
   /* */
   seccionOpciones: string[] = [
     'AM',
@@ -39,10 +41,13 @@ export class FormularioPage implements OnInit {
     private router: Router
   ) {
     this.formulario = new FormGroup({
-      correo: new FormControl(''),
+      linea : new FormControl(''),
+      estacion: new FormControl(''),
       fecha: new FormControl(new Date()),
-      asignatura: new FormControl(''),
-      seccion: new FormControl('')
+      contador: new FormControl(''),
+      aglomeracion: new FormControl(''),
+      flujo: new FormControl(''),
+      jornada: new FormControl('')
     })
   }
   async animarContenido() {
@@ -74,11 +79,6 @@ export class FormularioPage implements OnInit {
   home() {
     this.router.navigate(['/home']);
   }
-  onEstacionChange() {
-    // Puedes acceder a this.selectedEstacion para obtener el valor seleccionado y realizar acciones basadas en él.
-    console.log("Estación seleccionada:", this.selectedStation);
-    // Realiza otras acciones según sea necesario.
-  }
 
   getPosts() { //llamamos a la funcion getPost de nuestro servicio
     this.http.get(this.url).subscribe((data: any) => {
@@ -93,6 +93,7 @@ export class FormularioPage implements OnInit {
         }
       }
       this.nombreEstacion = this.nombreEstacion.filter((value, index, self) => self.indexOf(value) === index);
+      this.lines = data.lines.map((line: any) => line.name);
     });
 
   }
@@ -112,6 +113,18 @@ export class FormularioPage implements OnInit {
     });
   }
 
+  onLineChange() {
+    this.estacionesDisponibles = this.estacionData.lines
+      .find((line: any) => line.name === this.lineaSeleccionada)
+      .stations.map((station: any) => station.name);
+  }
+
+  onEstacionChange() {
+    // Puedes acceder a this.selectedEstacion para obtener el valor seleccionado y realizar acciones basadas en él.
+    console.log("Estación seleccionada:", this.selectedStation);
+    // Realiza otras acciones según sea necesario.
+  }
+
 
   onChangeTurno() {
     const TurnoControl = this.formulario.get('seccion');
@@ -127,7 +140,7 @@ export class FormularioPage implements OnInit {
 
   async onSubmit() {
     console.log(this.formulario.value);
-    const response = await this.RegistroAsistenciaService.AddAsistencia(this.formulario.value);
+    const response = await this.RegistroAsistenciaService.AddRecopilador(this.formulario.value);
     console.log(response)
   }
 

@@ -13,3 +13,13 @@ export interface Asistencia {
     asignatura: string;
     seccion: string;
 }
+
+export interface Recopilador {
+    linea : string;
+    estacion: string;
+    fecha: Date;
+    contador: string;
+    aglomeracion: string;
+    flujo: string;
+    jornada: string;
+}

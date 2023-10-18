@@ -1,5 +1,5 @@
 import { Injectable  } from '@angular/core';
-import { Asistencia } from '../app.model';
+import { Asistencia, Recopilador } from '../app.model';
 import { Firestore , collection , collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -12,9 +12,9 @@ export class VerAsistenciaService {
     
   }
 
-  obtenerAsistencia(): Observable<Asistencia[]> {
-    let asistRef = collection(this.firestore, 'asistencias');
-    return collectionData(asistRef, { idField: 'id'}) as Observable<Asistencia[]>;
+  obtenerAsistencia(): Observable<Recopilador[]> {
+    let recopiladorRef = collection(this.firestore, 'recopilador');
+    return collectionData(recopiladorRef, { idField: 'id'}) as Observable<Recopilador[]>;
   }
 
 }

@@ -6,8 +6,12 @@
 
 <ion-content [fullscreen]="true">
 
-  <select [(ngModel)]="selectedStation" (change)="onEstacionChange()">
-    <option *ngFor="let estacion of nombreEstacion" [value]="estacion">{{ estacion }}</option>
+  <select [(ngModel)]="lineaSeleccionada" (change)="onLineChange()">
+    <option *ngFor="let line of lines" [value]="line">{{ line }}</option>
+  </select>
+  
+  <select [(ngModel)]="selectedStation">
+    <option *ngFor="let station of estacionesDisponibles" [value]="station">{{ station }}</option>
   </select>
 
 
