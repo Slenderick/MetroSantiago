@@ -50,9 +50,8 @@ export class HomePage implements OnInit {
   ingresarMetro() {
     this.router.navigate(['/metro'])
   }
-
   verRecopilador() {
-    this.router.navigate(['/recopilador']);
+    this.router.navigate(['/datos']);
   }
 
   salir() {

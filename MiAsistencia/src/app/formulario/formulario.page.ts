@@ -32,6 +32,22 @@ export class FormularioPage implements OnInit {
     'Entrada',
     'Salida'
   ];
+  lineasOpciones: string[] = [
+    'Linea 1',
+    'Linea 2',
+    'Linea 3',
+    'Linea 4',
+    'Linea 4a',
+    'Linea 5',
+    'Linea 6',
+    'Linea 7',
+    'Linea 8',
+  ];
+  metrosDisponibles: string[] = [
+    'Los Orientales',
+    'Santa Ana',
+    'Pedreros',
+  ];
   contador: any = 0;
 
 
@@ -44,7 +60,7 @@ export class FormularioPage implements OnInit {
     private navCtrl: NavController
   ) {
     this.formulario = new FormGroup({
-      linea : new FormControl(''),
+      linea: new FormControl(''),
       estacion: new FormControl(''),
       fecha: new FormControl(new Date()),
       contador: new FormControl(''),
@@ -154,7 +170,7 @@ export class FormularioPage implements OnInit {
     // Agrega el valor del contador al objeto this.formulario.value
     const date = new Date();
     const fechaFormateada = date.toLocaleDateString();
-    if(date){
+    if (date) {
       this.formulario.patchValue({ fecha: fechaFormateada })
     }
 
@@ -170,14 +186,14 @@ export class FormularioPage implements OnInit {
 
     if (this.contador <= 30) {
       this.formulario.value.flujo = "Bajo";
-    }  else {
+    } else {
       this.formulario.value.flujo = "Alto";
     }
 
     console.log(this.formulario.value);
     const response = await this.RegistroAsistenciaService.AddRecopilador(this.formulario.value);
     console.log(response)
-    
+
     this.contador = 0;
 
   }

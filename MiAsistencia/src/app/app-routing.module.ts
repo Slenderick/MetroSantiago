@@ -55,7 +55,19 @@ const routes: Routes = [
   {
     path: 'edit-usuarios',
     loadChildren: () => import('./edit-usuarios/edit-usuarios.module').then(m => m.EditUsuariosPageModule)
+  },  {
+    path: 'datos',
+    loadChildren: () => import('./datos/datos.module').then( m => m.DatosPageModule)
   },
+  {
+    path: 'entradas',
+    loadChildren: () => import('./entradas/entradas.module').then( m => m.EntradasPageModule)
+  },
+  {
+    path: 'salidas',
+    loadChildren: () => import('./salidas/salidas.module').then( m => m.SalidasPageModule)
+  },
+
 
 
 

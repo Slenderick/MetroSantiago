@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <div class="banner">
+    <ion-toolbar>
+      <ion-title class="ion-text-center titulo" style="color: whitesmoke;">
+        Metro de Santiago
+      </ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div class="saludo">
+    <ion-title class="ion-text-center texto">
+      <h1>Bienvenido!</h1> 
+        <h3><b>{{usuario}}</b></h3><!--Aquí toca esperar a que los pibes hagan el formulario, para poner la variable en reemplazo del texto--> 
+    </ion-title>
+  </div>
+  <div class="contenido">
+
+    <ion-list>
+      <ion-item>
+        <ion-button (click)="verEntradas()" class="botones largo" color="amarillo-duoc" style="margin-top: 15px;" >
+          <ion-icon name="enter-outline" class="margen-der"></ion-icon>
+          <b>Ver Entradas</b>
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="verSalidas()" class="botones largo" color="amarillo-duoc" style="margin-top: 15px;" >
+          <ion-icon name="enter-outline" class="margen-der"></ion-icon>
+          <b>Ver Salidas</b>
+        </ion-button>
+      </ion-item> 
+    </ion-list>
+
+  </div>
+
+  <div class="imagen">
+    <img src="../../assets/icon/homefondo.png" alt="">
+  </div>
+</ion-content>
