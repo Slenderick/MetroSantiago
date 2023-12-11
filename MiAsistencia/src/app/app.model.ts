@@ -25,6 +25,18 @@ export interface Recopilador {
     mostrarAceptado: boolean;
 }
 
+export interface RecopiladorSalida {
+    linea: string;
+    estacion: string;
+    fecha: Date;
+    contador: string;
+    aglomeracion: string;
+    flujo: string;
+    tipoIngreso: string;
+    aprobado: boolean;
+    mostrarAceptado: boolean;
+}
+
 export interface CRUDUsuario {
     id?: string;
     nombre: string;
@@ -34,6 +46,7 @@ export interface CRUDUsuario {
 }
 
 export interface Estacion {
+    idEstacion: string;
     nombre: string;
     entradas: number;
     linea_1: string;

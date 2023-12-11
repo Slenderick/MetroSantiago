@@ -28,6 +28,15 @@ export class MetroPage implements OnInit {
   crearEstacion() {
     this.router.navigate(['/crear-estacion'])
   }
+  crearCombinacion() {
+    this.router.navigate(['/crear-combinacion'])
+  }
+  verEstacion() {
+    this.router.navigate(['/ver-estacion'])
+  }
+  verCombinacion() {
+    this.router.navigate(['/ver-combinacion'])
+  }
   ngOnInit() {
     this.animarTitulo()
     const navigation = this.router.getCurrentNavigation();

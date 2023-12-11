@@ -3,7 +3,7 @@ import { EstacionesService } from '../servicios/estaciones.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
-
+import { Estacion } from '../app.model';
 @Component({
   selector: 'app-crear-estacion',
   templateUrl: './crear-estacion.page.html',
@@ -11,6 +11,9 @@ import { NgModule } from '@angular/core';
 })
 export class CrearEstacionPage implements OnInit {
   formularioEstacion: FormGroup;
+  listaEstaciones = [];
+  estaciones: Estacion[] = [];
+  estacionfiltrada: Estacion | null = null;
   selectedTurn: any;
   lineasOpciones: string[] = [
     'Linea 1',
@@ -23,14 +26,14 @@ export class CrearEstacionPage implements OnInit {
     'Linea 7',
     'Linea 8',
   ];
-  constructor(private estacioneService: EstacionesService, private router: Router) {
+  constructor(private estacionesService: EstacionesService, private router: Router) {
     this.formularioEstacion = new FormGroup({
       nombre: new FormControl(''),
       entradas: new FormControl(''),
       linea_1: new FormControl(''),
       linea_2: new FormControl(''),
       linea_3: new FormControl(''),
-      combinacion: new FormControl('')
+      combinacion: new FormControl('No')
     })
   }
 
@@ -46,7 +49,7 @@ export class CrearEstacionPage implements OnInit {
     }
   }
   async onSubmit() {
-    const response = await this.estacioneService.AddEstacion(this.formularioEstacion.value);
+    const response = await this.estacionesService.AddEstacion(this.formularioEstacion.value);
     this.router.navigate(['/metro']);
   }
 }

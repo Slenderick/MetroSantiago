@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>ver-estacion</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <!-- Lista de usuarios -->
+  <ion-list>
+    <ion-item *ngFor="let estacion of estaciones">
+      {{ estacion.nombre }} - {{ estacion.linea_1 }}
+      <ion-button (click)="eliminarEstacion(estacion)">Eliminar</ion-button>
+      <ion-button (click)="editarEstacion(estacion)">Editar</ion-button>
+    </ion-item>
+  </ion-list>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ver-estacion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Detalles del usuario seleccionado -->
+  <ion-card *ngIf="estacionSeleccionada">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input [(ngModel)]="estacionSeleccionada.nombre" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Entradas</ion-label>
+        <ion-input type="number" [(ngModel)]="estacionSeleccionada.entradas"></ion-input>
+      </ion-item>
+          <ion-item style="margin-top: 20px;" class="texto">
+      <ion-select  label="Linea" [(ngModel)]="estacionSeleccionada.linea_1" placeholder="Seleccionar" (ionChange)="onChangeLinea()">
+        <ion-select-option *ngFor="let linea of lineasOpciones" [value]="linea">{{ linea }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón para guardar cambios -->
+  <ion-button (click)="actualizarEstacion()" *ngIf="estacionSeleccionada">Guardar Cambios</ion-button>
 </ion-content>
