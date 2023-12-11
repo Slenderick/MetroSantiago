@@ -1,0 +1,27 @@
+<ion-content>
+  <!-- Lista de usuarios -->
+  <ion-list>
+    <ion-item *ngFor="let usuario of usuarios">
+      {{ usuario.nombre }} - {{ usuario.email }}
+      <ion-button (click)="eliminarUsuario(usuario)">Eliminar</ion-button>
+      <ion-button (click)="editarUsuario(usuario)">Editar</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Detalles del usuario seleccionado -->
+  <ion-card *ngIf="usuarioSeleccionado">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input [(ngModel)]="usuarioSeleccionado.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input [(ngModel)]="usuarioSeleccionado.email"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón para guardar cambios -->
+  <ion-button (click)="actualizarUsuario()" *ngIf="usuarioSeleccionado">Guardar Cambios</ion-button>
+</ion-content>
