@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
-export interface User{
+export interface User {
     rut: number;
     dvrut: string;
     email: string;
@@ -14,7 +14,7 @@ export interface Asistencia {
 }
 
 export interface Recopilador {
-    linea : string;
+    linea: string;
     estacion: string;
     fecha: Date;
     contador: string;
@@ -30,4 +30,13 @@ export interface CRUDUsuario {
     email: string;
     contrasena: string;
     rol: string;
-  }
+}
+
+export interface Estacion {
+    nombre: string;
+    entradas: number;
+    linea_1: string;
+    linea_2: string;
+    linea_3: string;
+    combinacion: string;
+}

@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center titulo" style="color: whitesmoke;">Registrar Estacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <br>
+  <img style="width: auto;" src="../../assets/icon/azul2.png" alt="">
+  <form [formGroup]="formularioEstacion" (ngSubmit)="onSubmit()">
+
+
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-select formControlName="linea"  [(ngModel)]="lineaSeleccionada" label="Linea" placeholder="Seleccionar" (ionChange)="onLineChange()">
+        <ion-select-option *ngFor="let line of lines" [value]="line">{{ line }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-select formControlName="estacion" [(ngModel)]="selectedStation" label="Estacion" placeholder="Seleccionar">
+        <ion-select-option *ngFor="let station of estacionesDisponibles" [value]="station">{{ station }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    
+
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-select formControlName="tipoIngreso" label="Tipo Ingreso" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeTurno()">
+        <ion-select-option *ngFor="let seccion of ingresoOpciones" [value]="seccion">{{ seccion }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-input formControlName="contador" type="number">Cantidad: {{ contador }}</ion-input>
+    </ion-item>
+    
+    <ion-list>
+    <ion-button expand="full" color="success" (click)="incrementar()">Sumar</ion-button>
+       
+    <ion-button expand="full" color="danger" (click)="restar()">Restar</ion-button>  
+  
+    <ion-button class="botones" color="amarillo-duoc" style="margin-top: 40px;" expand="full" type="submit">Enviar Conteo</ion-button>
+    </ion-list>
+  </form>
+  <ion-button class="botones" color="amarillo-duoc" (click)="home()" style="margin-top: 10px;" expand="full" type="submit">Volver</ion-button>
+  <img style="width: auto;" src="assets/footer.png" id="iconoAppId">
+</ion-content>

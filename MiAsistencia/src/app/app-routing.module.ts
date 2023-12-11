@@ -31,6 +31,26 @@ const routes: Routes = [
     path: 'crud-usuarios',
     loadChildren: () => import('./crud-usuarios/crud-usuarios.module').then( m => m.CRUDUsuariosPageModule)
   },
+  {
+    path: 'metro',
+    loadChildren: () => import('./metro/metro.module').then( m => m.MetroPageModule)
+  },
+  {
+    path: 'crear-estacion',
+    loadChildren: () => import('./crear-estacion/crear-estacion.module').then( m => m.CrearEstacionPageModule)
+  },
+  {
+    path: 'crear-combinacion',
+    loadChildren: () => import('./crear-combinacion/crear-combinacion.module').then( m => m.CrearCombinacionPageModule)
+  },
+  {
+    path: 'ver-estacion',
+    loadChildren: () => import('./ver-estacion/ver-estacion.module').then( m => m.VerEstacionPageModule)
+  },
+  {
+    path: 'ver-combinacion',
+    loadChildren: () => import('./ver-combinacion/ver-combinacion.module').then( m => m.VerCombinacionPageModule)
+  },
 
 
 
