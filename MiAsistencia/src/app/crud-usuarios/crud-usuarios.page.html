@@ -1,6 +1,6 @@
 <ion-content style="text-align: center;">
   <div class="imagen">
-    <img src="../../assets/logo-duoc.png" alt="">
+    <img src="../../assets/icon/azul2.png" alt="">
   </div>
   <div class="bienvenida">
     <h1 class="texto" style="text-align: center;">Registra tu usuario </h1>
@@ -39,11 +39,11 @@
 
       <!-- rol -->
       <ion-item class="texto">
-        <ion-input formControlName="rol" labelPlacement="floating" placeholder="Recopilador / Analista">
-          <div slot="label">
-            <ion-text class="texto">Rol</ion-text>
-          </div>
-        </ion-input>
+        <ion-label>Rol</ion-label>
+        <ion-select formControlName="rol" placeholder="Rol">
+          <ion-select-option value="Recopilador">Recopilador</ion-select-option>
+          <ion-select-option value="Analista">Analista</ion-select-option>
+        </ion-select>
       </ion-item>
 
     </form>
