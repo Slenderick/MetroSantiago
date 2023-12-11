@@ -17,4 +17,4 @@ import { SalidasPage } from './salidas.page';
   ],
   declarations: [SalidasPage]
 })
-export class SalidasPageModule {}
+export class SalidasPageModule { }
