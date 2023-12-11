@@ -1,0 +1,39 @@
+<ion-content class="ion-padding">
+  <!-- Formulario para Crear y Editar Usuarios -->
+<ion-item>
+  <ion-label>Nombre</ion-label>
+  <ion-input [(ngModel)]="nuevoUsuario.nombre" name="nombre" required></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Email</ion-label>
+  <ion-input [(ngModel)]="nuevoUsuario.email" name="email" type="email" required></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Contraseña</ion-label>
+  <ion-input [(ngModel)]="nuevoUsuario.contrasena" name="contrasena" type="password" required></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Rol</ion-label>
+  <ion-select [(ngModel)]="nuevoUsuario.rol" name="rol" required>
+    <ion-select-option value="Recopilador">Recopilador</ion-select-option>
+    <ion-select-option value="Analista">Analista</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<!-- Botones para Crear y Actualizar Usuarios -->
+<!-- <ion-button (click)="crearOActualizarUsuario()">{{ usuarioSeleccionado ? 'Guardar Cambios' : 'Crear Usuario' }}</ion-button> -->
+
+
+<!-- Lista de usuarios con botones de edición y eliminación -->
+<ion-list>
+  <ion-item *ngFor="let usuario of usuarios">
+    <ion-label>{{ usuario.nombre }}</ion-label>
+    <ion-button (click)="editarUsuario(usuario)">Editar</ion-button>
+    <!--  -->
+    
+  </ion-item>
+</ion-list>
+
+
+
+</ion-content>

@@ -24,3 +24,10 @@ export interface Recopilador {
     aprobado: boolean;
     mostrarAceptado: boolean;
 }
+
+export interface CRUDUsuario {
+    nombre: string;
+    email: string;
+    contrasena: string;
+    rol: string;
+  }

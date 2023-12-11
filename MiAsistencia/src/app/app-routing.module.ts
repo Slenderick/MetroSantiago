@@ -27,7 +27,11 @@ const routes: Routes = [
     path: 'recopilador',
     loadChildren: () => import('./recopilador/recopilador.module').then( m => m.RecopiladorPageModule),
     canActivate: [AngularFireAuthGuard]
+  },  {
+    path: 'crud-usuarios',
+    loadChildren: () => import('./crud-usuarios/crud-usuarios.module').then( m => m.CRUDUsuariosPageModule)
   },
+
 
 
 
