@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'crud-usuarios',
     loadChildren: () => import('./crud-usuarios/crud-usuarios.module').then( m => m.CRUDUsuariosPageModule)
   },
+  {
+    path: 'edit-usuarios',
+    loadChildren: () => import('./edit-usuarios/edit-usuarios.module').then( m => m.EditUsuariosPageModule)
+  },
 
 
 

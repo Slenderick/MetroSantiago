@@ -1,82 +1,71 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MantenedorUsuariosService } from '../servicios/mantenedor-usuarios.service';
-import { CRUDUsuario } from '../app.model';
-import { ToastController } from '@ionic/angular';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+import { combineLatest } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-crud-usuarios',
   templateUrl: './crud-usuarios.page.html',
   styleUrls: ['./crud-usuarios.page.scss'],
 })
-export class CRUDUsuariosPage implements OnInit {
-  usuarios: CRUDUsuario[] = [];
-  nuevoUsuario: CRUDUsuario = { nombre: '', email: '', contrasena: '', rol: 'Recopilador' };
-  usuarioSeleccionado: CRUDUsuario | undefined;
+export class CRUDUsuariosPage implements OnInit { 
 
-  constructor(
+  nombre: number = 0;
+  email: string = '';
+  contrasena: string = '';
+  rol: string = '';
+
+  formRegistro: FormGroup;
+
+constructor(
     private mantenedorUsuariosService: MantenedorUsuariosService,
-    private toastController: ToastController
-  ) { }
+    private router: Router,
+    private alertController: AlertController,
+    private fb: FormBuilder,
+  ) { 
+
+    this.formRegistro = this.fb.group({
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contrasena: ['', Validators.required],
+      rol: ['', Validators.required],
+    });
+
+
+  }
 
   ngOnInit() {
-    this.obtenerUsuarios();
+  
   }
 
-  obtenerUsuarios() {
-    this.mantenedorUsuariosService.obtenerUsuarios().subscribe(usuarios => {
-      this.usuarios = usuarios;
-    });
+  esRegistroValido(): boolean {
+    const form = this.formRegistro;
+    if (form.invalid) {
+      Object.keys(form.controls).forEach(key => {
+        const control = form.get(key);
+        if (control?.invalid) {
+          control.markAsTouched();
+          // Puedes agregar mensajes de error aquí
+        }
+      });
+      return false;
+    }
+    return true;
   }
 
-  async crearUsuario() {
-    await this.mantenedorUsuariosService.crearUsuario(this.nuevoUsuario);
-    this.mostrarMensaje('Usuario creado correctamente');
-    this.limpiarFormulario();
-    this.obtenerUsuarios();
+registrarUsuario(): void {
+  if (this.esRegistroValido()) {
+    this.mantenedorUsuariosService.crearUsuario(this.formRegistro.value)
+      .then(() => {
+        this.mantenedorUsuariosService.presentToast("Usuario registrado exitosamente.");
+        this.router.navigate(['/login']);
+      })
+      .catch((error) => {
+        console.error('Error al registrar usuario:', error);
+      });
   }
-
-//  async actualizarUsuario() {
-//    if (this.usuarioSeleccionado && this.usuarioSeleccionado.id) {
-//      await this.mantenedorUsuariosService.actualizarUsuario(this.usuarioSeleccionado.id, this.usuarioSeleccionado);
-//      console.log('Usuario actualizado correctamente en la base de datos');
-//    } else {
-//      console.error('ID de usuario o usuario seleccionado no válido.');
- //   }
- // }
-//
- // async eliminarUsuario() {
- //   if (this.usuarioSeleccionado && this.usuarioSeleccionado.id) {
- //     await this.mantenedorUsuariosService.eliminarUsuario(this.usuarioSeleccionado.id);
-//      console.log('Usuario eliminado correctamente de la base de datos');
- //   } else {
-//      console.error('ID de usuario o usuario seleccionado no válido.');
-//    }//
-//  }//
-//
-  editarUsuario(usuario: CRUDUsuario) {
-    this.usuarioSeleccionado = { ...usuario };
-  }
-
- // async crearOActualizarUsuario() {
- //   if (this.usuarioSeleccionado) {
- //     await this.actualizarUsuario();
-  //  } else {
-  //    await this.crearUsuario();
- //   }
- // }
-
-  private async mostrarMensaje(mensaje: string) {
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: 2000,
-      position: 'top',
-      color: 'success'
-    });
-    toast.present();
-  }
-
-  private limpiarFormulario() {
-    this.nuevoUsuario = { nombre: '', email: '', contrasena: '', rol: 'Recopilador' };
-    this.usuarioSeleccionado = undefined;
-  }
+}
 }
