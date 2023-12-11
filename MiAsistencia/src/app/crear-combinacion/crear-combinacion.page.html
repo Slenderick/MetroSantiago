@@ -1,12 +1,15 @@
 <ion-content>
   <!-- Lista de usuarios -->
+  <ion-button (click)="volver()" class="botones largo" color="amarillo-duoc" style="margin-top: 15px;" >
+    <ion-icon name="enter-outline" class="margen-der"></ion-icon>
+    <b>Volver</b>
+  </ion-button>
   <ion-list>
     <ion-item *ngFor="let estacion of estacionfiltrada">
       {{ estacion.nombre }} - {{ estacion.linea_1 }}
       <ion-button (click)="editarEstacion(estacion)">Agregar Combinación</ion-button>
     </ion-item>
   </ion-list>
-
   <!-- Detalles del usuario seleccionado -->
   <ion-card *ngIf="estacionSeleccionada">
     <ion-card-content>

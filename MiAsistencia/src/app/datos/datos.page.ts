@@ -31,6 +31,9 @@ export class DatosPage implements OnInit {
   verEntradas() {
     this.router.navigate(['/entradas'])
   }
+  home() {
+    this.router.navigate(['/home'])
+  }
   ngOnInit() {
     this.animarTitulo()
     const navigation = this.router.getCurrentNavigation();

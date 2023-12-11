@@ -1,5 +1,9 @@
 <ion-content>
   <!-- Lista de usuarios -->
+  <ion-button (click)="volver()" class="botones largo" color="amarillo-duoc" style="margin-top: 15px;" >
+    <ion-icon name="enter-outline" class="margen-der"></ion-icon>
+    <b>Volver</b>
+  </ion-button>
   <ion-list>
     <ion-item *ngFor="let estacion of estaciones">
       {{ estacion.nombre }} - {{ estacion.linea_1 }}

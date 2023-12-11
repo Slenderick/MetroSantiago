@@ -71,7 +71,9 @@ export class EntradasPage implements OnInit {
     });
     toast.present();
   }
-
+  volver() {
+    this.router.navigate(['/metro']);
+  }
   onChangeLinea() {
 
   }

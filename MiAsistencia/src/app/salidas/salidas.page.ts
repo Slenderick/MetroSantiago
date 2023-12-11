@@ -27,6 +27,9 @@ export class SalidasPage implements OnInit {
   ngOnInit() {
     this.obtenerEntradas();
   }
+  volver() {
+    this.router.navigate(['/metro']);
+  }
   obtenerEntradas() {
     this.salidasService.obtenerAsistenciasFiltradas("Salida").subscribe((salidas) => {
       if (salidas) {

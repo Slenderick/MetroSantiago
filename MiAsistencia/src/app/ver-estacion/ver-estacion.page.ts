@@ -87,7 +87,9 @@ export class VerEstacionPage implements OnInit {
       }
     }
   }
-
+  volver() {
+    this.router.navigate(['/metro']);
+  }
   async showToast(message: string): Promise<void> {
     const toast = await this.toastController.create({
       message: message,

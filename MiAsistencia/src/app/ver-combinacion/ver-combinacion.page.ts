@@ -59,6 +59,9 @@ export class VerCombinacionPage implements OnInit {
   editarEstacion(estacion: Estacion) {
     this.estacionSeleccionada = { ...estacion };
   }
+  volver() {
+    this.router.navigate(['/metro']);
+  }
   async actualizarEstacion(): Promise<void> {
     if (this.estacionSeleccionada) {
       try {

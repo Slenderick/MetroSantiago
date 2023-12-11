@@ -28,6 +28,9 @@ export class MetroPage implements OnInit {
   crearEstacion() {
     this.router.navigate(['/crear-estacion'])
   }
+  home() {
+    this.router.navigate(['/home'])
+  }
   crearCombinacion() {
     this.router.navigate(['/crear-combinacion'])
   }

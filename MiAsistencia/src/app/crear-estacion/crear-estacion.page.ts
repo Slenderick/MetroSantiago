@@ -39,7 +39,7 @@ export class CrearEstacionPage implements OnInit {
 
   ngOnInit() {
   }
-  home() {
+  volver() {
     this.router.navigate(['/metro']);
   }
   onChangeLinea() {
