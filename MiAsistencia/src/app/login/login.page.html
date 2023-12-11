@@ -8,6 +8,7 @@
   </div>
   <br>
   <ion-list class="lista">
+   
     <form [formGroup]="formLogin">
       <ion-item>
         <ion-input id="usuario" class="shake texto" formControlName="email" labelPlacement="floating" placeholder="ej.ejemplo">
@@ -17,13 +18,18 @@
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input id="contrasena" class="shake texto" formControlName="password" type="password" labelPlacement="floating" placeholder="**********">
-          <div slot="label">
-            <ion-text class="texto">Contraseña</ion-text>
+        <ion-input  id="contrasena" class="shake texto" formControlName="password" type="password" labelPlacement="floating" placeholder="**********">
+          <div slot="label" > 
+            <ion-text class="texto" >Contraseña</ion-text>
           </div>
         </ion-input>
       </ion-item>
     </form>
+    <ion-item style="margin-top: 5%;">
+      <a [routerLink]="['/crud-usuarios']">Crear Cuenta</a>
+    </ion-item>
+    
+    
   </ion-list>
   <br>
   <ion-button style="margin: 10px;" expand="block" class="botones" color="amarillo-duoc" (click)="ingresar()"><b>Ingresar</b></ion-button>
