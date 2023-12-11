@@ -26,6 +26,7 @@ export interface Recopilador {
 }
 
 export interface CRUDUsuario {
+    id?: string;
     nombre: string;
     email: string;
     contrasena: string;
