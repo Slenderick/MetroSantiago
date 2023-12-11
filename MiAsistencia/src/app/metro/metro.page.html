@@ -1,13 +1,36 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>metro</ion-title>
-  </ion-toolbar>
+  <div class="banner">
+    <ion-toolbar>
+      <ion-title class="ion-text-center titulo" style="color: whitesmoke;">
+        Metro de Santiago
+      </ion-title>
+    </ion-toolbar>
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">metro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+
+  <div class="saludo">
+    <ion-title class="ion-text-center texto">
+      <h1>Bienvenido!</h1> 
+        <h3><b>{{usuario}}</b></h3><!--Aquí toca esperar a que los pibes hagan el formulario, para poner la variable en reemplazo del texto--> 
+    </ion-title>
+  </div>
+  <div class="contenido">
+
+    <ion-list>
+      <ion-item>
+        <ion-button (click)="crearEstacion()" class="botones largo" color="amarillo-duoc" style="margin-top: 15px;" >
+          <ion-icon name="enter-outline" class="margen-der"></ion-icon>
+          <b>Crear Estación</b>
+        </ion-button>
+      </ion-item>    
+    </ion-list>
+
+  </div>
+
+  <div class="imagen">
+    <img src="../../assets/icon/homefondo.png" alt="">
+  </div>
 </ion-content>

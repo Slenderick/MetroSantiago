@@ -9,7 +9,7 @@ import { UsuariosService } from '../servicios/usuarios.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  dato: string | null = null ;
+  dato: string | null = null;
   usuario: string | null = null;
   constructor(private activatedRoute: ActivatedRoute, private animationCtrl: AnimationController, private router: Router, private usuarioServicio: UsuariosService) { }
 
@@ -29,7 +29,7 @@ export class HomePage implements OnInit {
   }
 
   //Este método anima los botones y texto de la página
-  async animarContenido(){
+  async animarContenido() {
     const animation: Animation = this.animationCtrl.create()
       .addElement(document.querySelectorAll('.contenido'))
       .addElement(document.querySelectorAll('.logout'))
@@ -39,22 +39,25 @@ export class HomePage implements OnInit {
         { offset: 0, opacity: 0.2, transform: 'translateX(-100%)' },
         { offset: 0.5, opacity: 1, transform: 'translateX(0%)' },
       ]);
-      await animation.play()
+    await animation.play()
   }
 
   //Este método deberá activar la cámara cuando toque aplicar el plugin, por ahora enviará el username al qr-scan page, para luego devolverse en caso de ser necesario.
 
-  registrarConteo(){
+  registrarConteo() {
     this.router.navigate(['/formulario']);
   }
+  ingresarMetro() {
+    this.router.navigate(['/metro'])
+  }
 
-  verRecopilador(){
+  verRecopilador() {
     this.router.navigate(['/recopilador']);
   }
 
-  salir(){
+  salir() {
     this.usuarioServicio.logout()
-      .then(response =>{
+      .then(response => {
         this.router.navigate(['/login']);
       })
       .catch(error => console.log(error));
@@ -66,12 +69,12 @@ export class HomePage implements OnInit {
     this.animarContenido()
     //Trayendo el correo que actuará como username, y reemplazamos el método que teníamos antes
     const navigation = this.router.getCurrentNavigation();
-    if (navigation && navigation.extras.state){
+    if (navigation && navigation.extras.state) {
       this.dato = navigation.extras.state['email'];
     }
-    if(this.dato){
+    if (this.dato) {
       const posicion = this.dato?.indexOf('@');
-      this.usuario = this.dato?.substring(0,posicion);
+      this.usuario = this.dato?.substring(0, posicion);
     }
   }
 }

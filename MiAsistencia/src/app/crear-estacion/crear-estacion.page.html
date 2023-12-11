@@ -9,39 +9,26 @@
   <br>
   <img style="width: auto;" src="../../assets/icon/azul2.png" alt="">
   <form [formGroup]="formularioEstacion" (ngSubmit)="onSubmit()">
-
-
     <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="linea"  [(ngModel)]="lineaSeleccionada" label="Linea" placeholder="Seleccionar" (ionChange)="onLineChange()">
-        <ion-select-option *ngFor="let line of lines" [value]="line">{{ line }}</ion-select-option>
+      <ion-input type="text" formControlName="nombre" labelPlacement="floating" placeholder="Santa Ana">
+        <div slot="label">
+          <ion-text class="texto">Nombre Estacion</ion-text>
+        </div>
+      </ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-input type="number" formControlName="entradas" labelPlacement="floating" placeholder="2">
+        <div slot="label">
+          <ion-text class="texto">Entradas</ion-text>
+        </div>
+      </ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 20px;" class="texto">
+      <ion-select formControlName="linea_1" label="Linea" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeLinea()">
+        <ion-select-option *ngFor="let linea of lineasOpciones" [value]="linea">{{ linea }}</ion-select-option>
       </ion-select>
     </ion-item>
-
-    <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="estacion" [(ngModel)]="selectedStation" label="Estacion" placeholder="Seleccionar">
-        <ion-select-option *ngFor="let station of estacionesDisponibles" [value]="station">{{ station }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    
-
-    <ion-item style="margin-top: 20px;" class="texto">
-      <ion-select formControlName="tipoIngreso" label="Tipo Ingreso" [(ngModel)]="selectedTurn" placeholder="Seleccionar" (ionChange)="onChangeTurno()">
-        <ion-select-option *ngFor="let seccion of ingresoOpciones" [value]="seccion">{{ seccion }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item style="margin-top: 20px;" class="texto">
-      <ion-input formControlName="contador" type="number">Cantidad: {{ contador }}</ion-input>
-    </ion-item>
-    
-    <ion-list>
-    <ion-button expand="full" color="success" (click)="incrementar()">Sumar</ion-button>
-       
-    <ion-button expand="full" color="danger" (click)="restar()">Restar</ion-button>  
-  
-    <ion-button class="botones" color="amarillo-duoc" style="margin-top: 40px;" expand="full" type="submit">Enviar Conteo</ion-button>
-    </ion-list>
+    <ion-button class="botones" color="amarillo-duoc" style="margin-top: 40px;" expand="full" type="submit">Crear Estacion</ion-button>
   </form>
   <ion-button class="botones" color="amarillo-duoc" (click)="home()" style="margin-top: 10px;" expand="full" type="submit">Volver</ion-button>
   <img style="width: auto;" src="assets/footer.png" id="iconoAppId">
